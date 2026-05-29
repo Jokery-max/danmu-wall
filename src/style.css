@@ -1,0 +1,220 @@
+/* ====== Reset ====== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ====== Mobile Sender ====== */
+body.mobile {
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mobile .app {
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.mobile h1 {
+  color: #fff;
+  font-size: 28px;
+  margin-bottom: 8px;
+  letter-spacing: 4px;
+}
+
+.mobile .subtitle {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 13px;
+  margin-bottom: 24px;
+}
+
+/* Nickname */
+.nick-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.nick-label {
+  color: #ffd93d;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 4px 14px;
+  background: rgba(255, 215, 0, 0.1);
+  border: 1px solid rgba(255, 215, 0, 0.25);
+  border-radius: 16px;
+  max-width: 140px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.nick-input {
+  width: 120px !important;
+  padding: 4px 10px !important;
+  font-size: 14px !important;
+  text-align: center;
+  margin-bottom: 0 !important;
+}
+
+.nick-edit {
+  width: auto !important;
+  padding: 4px 8px !important;
+  font-size: 14px !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 10px !important;
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  letter-spacing: 0 !important;
+}
+
+/* Type tabs */
+.type-tabs {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.type-btn {
+  padding: 8px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.type-btn.active {
+  color: #fff;
+  background: rgba(77, 150, 255, 0.25);
+  border-color: #4d96ff;
+}
+
+.type-btn:last-child.active {
+  background: rgba(255, 215, 0, 0.2);
+  border-color: #ffd700;
+  color: #ffd700;
+}
+
+.mobile input {
+  width: 100%;
+  padding: 14px 18px;
+  font-size: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  outline: none;
+  transition: border-color 0.2s;
+  margin-bottom: 16px;
+}
+
+.mobile input:focus {
+  border-color: #4d96ff;
+}
+
+.mobile input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.mobile button {
+  width: 100%;
+  padding: 14px;
+  font-size: 17px;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, #4d96ff, #6c5ce7);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  letter-spacing: 2px;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.mobile button:active {
+  transform: scale(0.97);
+  box-shadow: 0 0 24px rgba(77, 150, 255, 0.4);
+}
+
+.mobile button:disabled {
+  opacity: 0.4;
+  transform: none;
+}
+
+.mobile .toast {
+  margin-top: 12px;
+  color: #ff6b6b;
+  font-size: 13px;
+  min-height: 20px;
+}
+
+/* ====== Big Screen (Normal) ====== */
+body.screen {
+  margin: 0;
+  overflow: hidden;
+  background: #000;
+  font-family: "PingFang SC", "Microsoft YaHei", "SimHei", sans-serif;
+}
+
+/* ====== Big Screen (Overlay mode for OBS) ====== */
+body.screen.overlay {
+  background: transparent;
+}
+
+#danmu-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.danmu {
+  position: absolute;
+  left: 100vw;
+  white-space: nowrap;
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 1;
+  text-shadow:
+    1px 1px 2px rgba(0, 0, 0, 0.95),
+    0 0 8px rgba(0, 0, 0, 0.7);
+  will-change: transform;
+  pointer-events: none;
+  animation: scroll linear forwards;
+}
+
+/* VIP danmaku - gold glow */
+.danmu-vip {
+  filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.5));
+}
+
+/* Announce danmaku - centered notice */
+.danmu-announce {
+  position: absolute;
+  z-index: 10;
+}
+
+/* Nickname tag inside danmaku */
+.danmu-nick {
+  font-size: 0.6em;
+  opacity: 0.65;
+  margin-right: 2px;
+}
+
+.danmu-text {
+  font-weight: bold;
+}
+
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(calc(-100vw - 100%)); }
+}
